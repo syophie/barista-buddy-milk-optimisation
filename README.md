@@ -2,13 +2,6 @@
 
 A decision model that selectively intervenes in a coffee queue to reduce milk waste while preserving drink quality, triggered by real‑time demand conditions.
 
-The purpose of this project is to formalise an observed triage intuition into a simple, testable algorithm:
-
-- Translate an operational bottleneck into a decision model
-- Define demand‑based intervention triggers (when *not* to intervene)
-- Frame a multi‑objective optimisation problem (waste vs quality)
-- Build reproducible modelling artefacts from first principles
-
 ---
 
 ## Background
@@ -19,6 +12,14 @@ The only meaningful difference was the milk type: **oat vs cows**.
 This raised a simple question:
 
 > How do baristas implicitly triage tickets when milk is the binding constraint?
+
+
+The purpose of this project is to formalise an observed triage intuition into a simple, testable algorithm:
+
+- Translate an operational bottleneck into a decision model
+- Define demand‑based intervention triggers (when *not* to intervene)
+- Frame a multi‑objective optimisation problem (waste vs quality)
+- Build reproducible modelling artefacts from first principles
 
 ---
 
