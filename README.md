@@ -75,9 +75,7 @@ Speed is treated as a **trigger and constraint**, not the objective.
 - Milk waste (by milk type / by barista)
 
 **Maximise**
-- Milk quality
-  - freshness
-  - avoiding over‑stretching or under‑filling
+- Milk quality (by freshness, avoiding over‑stretching or under‑filling)
 
 **Subject to**
 - Order integrity (each drink still receives what it requires)
