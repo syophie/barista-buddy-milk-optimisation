@@ -89,12 +89,14 @@ Speed is treated as a **trigger and constraint**, not the objective.
 
 Each drink type maps to an expected milk requirement (oz):
 
-| Drink type   | Milk required |
-|-------------|---------------|
-| Flat white  | X oz          |
-| Latte       | X oz          |
-| Cappuccino | X oz          |
-| Long black | 0 oz          |
+## Drink to milk-volume mapping
+
+| Drink type   | Milk required (oz) | Notes |
+|--------------|-------------------|-------|
+| Flat white   | 4 oz              | Steamed milk with minimal foam; smaller volume, tighter quality constraint |
+| Latte        | 8 oz              | Larger milk volume; higher waste risk during busy periods |
+| Cappuccino   | 6 oz              | Moderate milk volume with foam component |
+| Long black   | 0 oz              | No milk required; excluded from milk optimisation |
 
 This converts a list of orders into a **milk demand profile** at a given point in the queue.
 
