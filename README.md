@@ -136,32 +136,24 @@ y = \{ \text{orders filled},\ \text{milk oz suggested} \}
 
 ## Repository structure
 barista-buddy-milk-optimisation/
+## Repository structure & usage
 
-├── README.md
-
-├── src/
-
-│   ├── trigger.py
-
-│   ├── triage.py
-
-│   ├── optimiser.py
-
-│   └── utils.py
-
-├── data/
-
-│   └── sample_orders.csv
-
-├── notebooks/
-
-│   └── exploration.ipynb
-
-├── outputs/
-
-│   └── example_results.csv
-
-└── requirements.txt
+| Path / File | What it is | Typical usage |
+|------------|------------|---------------|
+| `barista-buddy-milk-optimisation/` | Project root | Top-level folder for the whole project. Organises code, data, outputs, and documentation. |
+| `README.md` | Project overview | Explains what the project does, how to run it, assumptions, inputs/outputs, and setup instructions. |
+| `requirements.txt` | Dependencies list | Lists required Python packages. Installed via `pip install -r requirements.txt`. |
+| `src/` | Source code | Contains the core Python logic for the project. |
+| `src/trigger.py` | Entry-point / runner | Main script to run the full pipeline end-to-end (load data → optimise → save results). |
+| `src/triage.py` | Pre-processing & rules | Handles validations, filtering, and decision logic before optimisation runs. |
+| `src/optimiser.py` | Optimisation logic | Core algorithm that performs milk optimisation (e.g. minimising waste, meeting demand). |
+| `src/utils.py` | Helper functions | Shared utility functions (data loading, formatting, common calculations). |
+| `data/` | Input data | Stores raw or sample input datasets. Not modified by the code. |
+| `data/sample_orders.csv` | Sample input data | Example dataset used for testing, demos, or development. |
+| `notebooks/` | Exploration & analysis | Jupyter notebooks for exploratory analysis and prototyping. |
+| `notebooks/exploration.ipynb` | EDA notebook | Used to understand data patterns and test ideas before finalising logic. |
+| `outputs/` | Generated outputs | Stores results produced by the optimiser. |
+| `outputs/example_results.csv` | Example output | Sample output showing what the optimiser produces. |
 
 ---
 
