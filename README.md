@@ -136,18 +136,31 @@ y = \{ \text{orders filled},\ \text{milk oz suggested} \}
 
 ## Repository structure
 barista-buddy-milk-optimisation/
+
 ├── README.md
+
 ├── src/
+
 │   ├── trigger.py
+
 │   ├── triage.py
+
 │   ├── optimiser.py
+
 │   └── utils.py
+
 ├── data/
+
 │   └── sample_orders.csv
+
 ├── notebooks/
+
 │   └── exploration.ipynb
+
 ├── outputs/
+
 │   └── example_results.csv
+
 └── requirements.txt
 
 ---
