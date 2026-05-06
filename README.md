@@ -1,6 +1,8 @@
 # Barista Buddy — Ticket Triage & Milk Optimisation
 
-A decision model that selectively intervenes in a coffee queue to reduce milk waste while preserving drink quality, triggered by real‑time demand conditions. Most coffee-shop optimisation tools focus on throughput and speed, not explicitly on waste reduction and quality such as the proposed, co-primary objectives of Barista Buddy.
+A decision model that selectively intervenes in a coffee queue to reduce milk waste while preserving drink quality, triggered by real‑time demand conditions. 
+
+Coffee shops routinely waste 6–25% of their milk through over-steaming, pitcher leftovers, and imprecise portioning. The Sydney case study measured a reduction from 6.3 L/day to 0.2 L/day in milk waste when Übermilk was introduced. Most coffee-shop optimisation tools focus on throughput and speed, not explicitly on waste reduction and quality such as the proposed, co-primary objectives of Barista Buddy.
 
 The model defines two optimisation objectives — minimise milk waste (by milk type, by site) and maximise milk quality (freshness, correct volume, no over-stretching) — subject to order integrity and acceptable delivery time constraints. 
 - Speed is treated as a constraint or trigger, not the objective itself.
@@ -29,11 +31,7 @@ To begin, I plan to model a simple, testable algorithm. Not every order warrants
 
 ## Problem statement
 
-During peak periods, baristas handle a stream of drink *tickets* that compete for constrained milk handling capacity (pouring, steaming, freshness windows). 
-
-Coffee shops routinely waste 6–25% of their milk through over-steaming, pitcher leftovers, and imprecise portioning. For a moderately busy shop using 10 litres per day, even a 10% waste rate equates to roughly £436.80 lost annually; at higher waste rates (15–20%), the true cost is significantly greater. In a high-volume Sydney café consuming 105 litres of milk daily, measured waste reached 6.3 litres per day — AU$5,733 per year.
-
-The goal is to design a **selective triage system** that reduces milk waste and retains coffee quality **without disrupting standard service**.
+During peak periods, baristas handle a stream of drink *tickets* that compete for constrained milk handling capacity (pouring, steaming, freshness windows). The goal is to design a **selective triage system** that reduces milk waste and retains coffee quality **without disrupting standard service**.
 
 ---
 
@@ -301,3 +299,31 @@ Repo: barista-buddy-milk-optimisation/
 
 ## Real-World Working Examples:
 Several existing products and projects address parts of your problem space. None replicates the exact concept of *queue-level milk triage*, but each demonstrates relevant capabilities.
+
+| Solution | Type | Focus | Key metric / claim | Relevance to Barista Buddy |
+|---|---|---|---|---|
+| Übermilk | Hardware (automated milk foamer / dispenser) | Precise milk dosing per drink | Reduced daily waste from **6.3 L → 0.2 L** in a Sydney CBD café; **AU$5,551** annual saving; **2,226.5 L/year** waste reduction. Capacity: up to **250 drinks/hour**. | Solves waste at the steaming point via hardware; software approach may complement or compete depending on positioning. |
+| Latte Art Factory | Hardware (commercial milk frother) | Calibrated milk foaming per recipe | Claims **up to 25% reduction** in milk waste by foaming exact recipe volumes. | Similar hardware approach; eliminates over‑foaming by design. |
+| BaristaIQ (open‑source) | Software (ML‑based queue scheduler) | Throughput and concurrency during rush | **2–3 min** wait reduction per order at peak; **+12–18** additional orders per rush hour (70‑seat café); ~**80 min/day** throughput recovered. Modules include complexity scoring, greedy scheduling, RL feedback loop, POS stream, and demand forecaster. | Closest architectural parallel — real‑time, ML‑driven queue guidance — but optimises for speed rather than waste. |
+| Starbucks AI Inventory | Enterprise software (computer vision + predictive analytics) | Store‑level inventory and perishables management | Deployed across **11,000** stores by Dec 2025; **10–15%** reduction in excess inventory; **USD 150–225M** estimated annual savings; oat‑milk waste cut by **25,000–30,000 cartons/year**. | Operates at inventory / supply‑chain level rather than order level; shows AI‑driven waste reduction is viable at scale. |
+| WMF espresso NEXT | Hardware (hybrid espresso machine) | Bridging automation with barista craft | Semi‑automatic portafilters, AutoSteam, integrated grinder; supports less‑experienced staff while preserving manual control for experts. | Demonstrates augmentation rather than replacement of barista skill — directly relevant to UX design principles. |
+| Buzali et al. (2024) simulation | Academic (discrete‑event simulation) | Queue optimisation in a Starbucks branch | Simio‑based simulation showed **40% reduction in waiting time** with optimal staffing (3 cashiers + 3 baristas) during rush hours. | Methodological precedent for modelling café operations computationally; does not address ingredient‑level waste. |
+| Low‑tech best practice | Operational (training + equipment choice) | Portion control and barista technique | Pre‑measured jugs save **5–10%** on milk costs; right‑sizing cups cuts **5–8%** waste; proper jug usage eliminates up to **10%** daily waste; staff training yields **up to 20%** efficiency gains. | Establishes the baseline the system must exceed; many operators may adopt these before investing in software. |
+
+## Relevent Literature:
+The problem sits across several research domains. The table below maps each domain to its relevance and the type of evidence available.
+
+| Domain | Relevance to Barista Buddy | Evidence quality & examples |
+|---|---|---|
+| Operations Research / Queuing Theory | Directly applicable — modelling coffee‑shop workflows as queuing systems; optimising staffing and task sequencing | **Academic:** Buzali, Elizondo & Muñiz (2024) simulated a Starbucks branch using Simio and queue theory, achieving a **40% reduction in waiting time** through optimal cashier/barista allocation (IEOM). |
+| Sustainability / Life‑Cycle Assessment (LCA) | Provides the environmental rationale for waste reduction; dairy’s carbon and resource footprint is well documented | **Institutional:** IDF conducts ongoing LCA work on the dairy sector; *MDPI Sustainability* published an integrative systematic review on LCA applied to milk production and processing; Our World in Data and the World Resources Institute compare dairy vs plant‑based milk footprints. |
+| Food Waste Reduction & Behavioural Nudges | Staff‑ and customer‑facing nudges are low‑cost interventions that complement algorithmic approaches | **Academic:** A study in the *Journal of Behavioral and Experimental Economics* (Reisch et al., Cambridge Judge) found a table‑tent message in a Copenhagen restaurant reduced food waste by **16 percentage points** vs a control where **41%** of diners left food (n=285). |
+| Demand Forecasting & Inventory Management | Upstream of the problem — predicting volume enables proactive milk ordering and end‑of‑shift waste minimisation | **Industry:** Starbucks deployed AI‑driven inventory management (computer vision, 3D spatial intelligence) across **11,000** North American stores by Dec 2025, achieving **8×** inventory count frequency, **10–15%** less excess inventory, and **30–40%** fewer stockouts (GrowthHQ analysis). |
+| Human–Computer Interaction (HCI) & Barista Workflow | Determines whether baristas will actually use and trust the system | **Industry reporting:** Perfect Daily Grind notes modern barista culture balances human craft with automation to improve consistency; hybrid machines (e.g. WMF espresso NEXT) exemplify augmentation rather than replacement. |
+| Coffee‑Shop Simulation & Scheduling | Provides methodological precedents for modelling barista task‑flows and testing interventions computationally | **Academic:** IEOM 2024 paper modelled real‑world, rush‑hour, and optimised scenarios for a Mexico City Starbucks using Simio to minimise total customer time. |
+| Industry Practice & Automation Technology | Competing and complementary products — automated milk dispensers, robotic baristas, POS analytics | **Commercial:** Übermilk, Latte Art Factory, WMF espresso NEXT. |
+
+### Gaps in the existing literature
+
+A notable finding from the IEOM 2024 conference paper is that *few research papers deal with scheduling problems in food industries and food manufacturing resource planning*. Existing academic work focuses overwhelmingly on **speed and throughput** (reducing customer wait times) rather than **ingredient‑level waste** within the service process.  
+This project addresses that gap directly. However, the absence of prior work also introduces risk: there is **no published precedent** for a queue‑reordering algorithm targeting milk waste specifically, leaving assumptions about impact magnitude unvalidated.
